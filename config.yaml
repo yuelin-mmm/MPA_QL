@@ -1,0 +1,41 @@
+mpa_ql:
+  rho: 0.01               # ρ: stagnation window ratio, W_stag = ρ * Max_t
+  H: 30                   # diversity history length
+  tau: 0.80               # τ: diversity contraction ratio, W_con = τ * mean(D)
+  n_state: 4              # Q states (stagnation x contraction)
+  n_action: 3             # Q actions: diff_mut / dyn_alt / cobl
+
+mpa:
+  P: 0.5                  # MPA step coefficient
+  FADs: 0.2               # FADs effect probability
+  levy_scale: 0.05        # Levy step scale
+  levy_alpha: 1.5         # Levy exponent α
+
+q_learning:
+  eps: 0.1                # ε: ε-greedy exploration rate
+  gamma: 0.8              # γ: discount factor
+  alpha0: 0.9             # α0: learning-rate decay coefficient
+
+search:
+  NP: 30                  # population size
+  Max_t: 1000             # max iterations
+
+cec:
+  dim: 10                 # problem dimension (10 | 20)
+  runtime: 51             # independent runs per function
+  start: 1                # first function index (inclusive)
+  end: null               # null = all 12; exclusive end, e.g. 3 -> F1,F2
+
+multi_uav:
+  scenario: Scenario      # scene id in scenario_example.json
+  runtime: 51             # independent runs
+  N_wp: 10                # waypoints per UAV
+  dim: 3                  # waypoint coordinates (x, y, z)
+  phi_max: 45             # φ_max: max heading turn (deg)
+  psi_max: 45             # ψ_max: max pitch (deg)
+  Q_coll: 1.0e+10         # collision penalty coefficient
+  safe_dis: 5             # UAV-UAV safe distance (m)
+  mu1: 0.3                # μ1: weight of J_len
+  mu2: 0.3                # μ2: weight of J_alt
+  mu3: 0.1                # μ3: weight of J_coll
+  mu4: 0.3                # μ4: weight of J_smooth
