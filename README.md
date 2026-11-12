@@ -1,6 +1,8 @@
 # MPA-QL
 
-*A Q-Learning-Enhanced Marine Predator Algorithm for Multi-UAV Path Planning* (PRICAI 2026): multi-UAV path planning and CEC2022.
+*A Q-Learning-Enhanced Marine Predator Algorithm for Multi-UAV Path Planning* (PRICAI 2026).
+
+🔗 The paper link will be available soon.
 
 ## Layout
 
@@ -16,7 +18,7 @@ MPA_QL/
   run_cec.py
 ```
 
-Run logs go to `output/` (multi-UAV) and `output_cec/` (CEC); created on demand.
+Run logs go to `output/` (multi-UAV) and `output_cec/` (CEC).
 
 ## Install
 
@@ -24,11 +26,13 @@ Run logs go to `output/` (multi-UAV) and `output_cec/` (CEC); created on demand.
 pip install -r requirements.txt
 ```
 
-## Config
+## Configs
 
-Edit [`config.yaml`](config.yaml). CLI flags override yaml when given.
+Default configurations are in [`config.yaml`](config.yaml). CLI flags override them when provided.
 
-## Multi-UAV
+## How to Run
+
+### Multi-UAV Env
 
 ```bash
 python run_multi_uav.py
@@ -37,14 +41,14 @@ python run_multi_uav.py --runtime 1          # smoke
 
 Outputs: `output/0_*.txt`, `output/metrics_*.jsonl`.
 
-### Scene JSON
+#### Scene JSON
 
-Edit [`env/multi_uav/scenario_example.json`](env/multi_uav/scenario_example.json). Add more objects to the array for extra scenes.
+Edit [`env/multi_uav/scenario_example.json`](env/multi_uav/scenario_example.json) to adjust scene parameters.
 
-| Field | Meaning |
+| Parameter | Meaning |
 |-------|---------|
 | `id` | Scene name (must match `config.yaml` / `--scenario`) |
-| `map_size` | Square map side length (m), e.g. `300` → 300×300 |
+| `map_size` | Square map side length (m), e.g. `300` means 300×300 |
 | `z_max` | Vertical search upper bound (m) |
 | `height_min` / `height_max` | Flight altitude band (m) |
 | `uav_num` | Number of UAVs |
@@ -54,7 +58,7 @@ Edit [`env/multi_uav/scenario_example.json`](env/multi_uav/scenario_example.json
 | `nfz_count` | NFZ count (must match `nfz` length) |
 | `nfz` | Rectangles: `cx`, `cy`, `half_x`, `half_y` |
 
-## CEC2022
+### CEC2022 Benchmark
 
 ```bash
 python run_cec.py
@@ -63,4 +67,6 @@ python run_cec.py --dim 10 --start 1 --end 3 --runtime 3   # smoke
 
 Outputs: `output_cec/MPAQL_dim{10|20}.txt`.
 
-`env/cec2022/CEC2022.py` and `input_data/` are the official Python CEC 2022 bound-constrained suite (Abhishek Kumar et al.), from [P-N-Suganthan/2022-SO-BO](https://github.com/P-N-Suganthan/2022-SO-BO) (`Python-CEC2022.zip`). Wrapper: `cec2022_bridge.py`.
+#### Source
+
+`env/cec2022/CEC2022.py` and `input_data/` are the official Python CEC 2022 bound-constrained suite (Abhishek Kumar et al.), from [P-N-Suganthan/2022-SO-BO](https://github.com/P-N-Suganthan/2022-SO-BO) (`Python-CEC2022.zip`).
