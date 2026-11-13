@@ -9,8 +9,8 @@
 ```text
 MPA_QL/
   config.yaml              # experiment / algorithm defaults
-  load_config.py           # yaml → algo kwargs
-  mpa_ql/                  # MPA_QL, multi_MPA_QL, Initialization, common
+  load_config.py           # yaml -> algorithm kwargs
+  mpa_ql/                  # MPA_QL(for CEC), multi_MPA_QL(for multi-UAV)
   env/
     multi_uav/             # CostFunction, scenario.py, scenario_example.json
     cec2022/               # CEC2022.py, input_data/, cec2022_bridge.py
